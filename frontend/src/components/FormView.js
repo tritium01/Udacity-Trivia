@@ -14,7 +14,6 @@ class FormView extends Component {
       categories: {}
     }
   }
-
   componentDidMount(){
     $.ajax({
       url: `/categories`, //TODO: update request URL
@@ -49,6 +48,7 @@ class FormView extends Component {
       },
       crossDomain: true,
       success: (result) => {
+        console.log(this.state)
         document.getElementById("add-question-form").reset();
         return;
       },

@@ -5,6 +5,7 @@
 ### Installing Dependencies
 
 #### Python 3.7
+In order for current dependecies to work please use python 3.7 
 
 Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
 
@@ -68,7 +69,6 @@ One note before you delve into your tasks: for each endpoint you are expected to
 
 REVIEW_COMMENT
 ```
-This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
 
 Endpoints
 GET '/categories'
