@@ -72,9 +72,12 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/questions'
+GET '/categories/<question_id>/questions'
+POST '/questions'
+POST '/questions/search'
+POST '/quizzes/'
+DELETE '/questions/<question_id>'
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -87,6 +90,58 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
+GET '/questions'
+-Fetches all the questions in their table
+- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+- Request Arguments: None
+- Returns: An object with multiple categories, questions are formatted and paginated to a max of 10, other key:value pairs include total amount of questions, categories and the current category in the selection. By default current category is None.
+{'success': True,
+'questions': [questions]
+'total_questions': 14,
+'categories': categories, 
+'current_category': current_category} 
+
+GET '/categories/<category_id>/questions'
+-Fetches specific questions inside a category using a integer value for the category id
+-Request Arguments: URI param category id 
+-Returns: An object containing the following key:value pairs:
+{"success": True,
+"questions": formatted_questions,
+"total_questions": len(formatted_questions),
+"current_category": category.type}
+
+POST '/questions'
+-Creates a new question using a json object
+-Request Arguments: Object containing the following key:value pairs:
+{question: question,
+answer: answer,
+difficulty: difficulty(integer value),
+category: category (integer value)}
+-Return a object with a success key and value True
+
+POST '/questions/search'
+-Using a POST request a search query is made in order to find the questions that have a matching word in them
+-Request Arguments: Uses an object as follows: {searchTerm: searchTerm}
+-Returns an object the following key:value pairs:
+{"success": True,
+"questions": formatted_questions,
+"total_questions": length of questions,
+"current_category": None}
+Please note that values returned are also paginated to return 10 items
+
+POST '/quizzes/'
+-Using a post request questions are returned filtering from the correct category and never repeating a question on that current quiz
+-Required Arguments: uses two key:value pairs in order o find out the category and the questions previously used they are describe as follows:
+{previous_questions: previousQuestions,
+quiz_category: quizCategory}
+-Returns an with two key:value pairs. Pay attention to the key question which returns the next question to be used in the test.
+{'success': True,
+'question': next_question}
+
+DELETE '/questions/<question_id>'
+-Deletes a question based on a integer id provided as a parameter
+-Required Arguments: question_id as a param used to delete that question
+-Returns an object with a key of success and value of true
 ```
 
 
